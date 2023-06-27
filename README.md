@@ -1,4 +1,4 @@
-# IMPORTANT: This is Mod needs to be installed manually!!!
+# IMPORTANT: This Mod needs to be installed manually!!!
 
 <img src='icon.png' />
 
