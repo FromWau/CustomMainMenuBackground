@@ -14,4 +14,4 @@ Research and instructions were made by [u/taskinoz](https://www.reddit.com/user/
 Concept arts, used for this video, were created by Tu Bui, Concept and Matte Artist @ Respawn Entertainment
 
 ## How to create custom backgrounds
-Follow the guide on the [Titanfall 2 Modding Guide by NoSkill](https://noskill.gitbook.io/titanfall2/). Guide Link: https://noskill.gitbook.io/titanfall2/Modding/user-interface/menus/menu-background
+Follow the guide on the [Titanfall 2 Modding Guide by NoSkill](https://noskill.gitbook.io/titanfall2/) Page. Guide Link: https://noskill.gitbook.io/titanfall2/Modding/user-interface/menus/menu-background
