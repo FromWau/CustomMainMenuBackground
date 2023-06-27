@@ -11,7 +11,7 @@ Backup and install main menu background
 
 ## Upps i didnt make a backup (2 Options)
 * Restore the game files via your game launcher.
-* Download `menu_act01_backup` from [Mega](https://mega.nz/file/yMEAlJzQ#0rgUq31hDG7SHnwnJWOAy4eSkOFiJO4apJVFeQx3dxY).
+* Download `menu_act01_backup.bik` from [Mega](https://mega.nz/file/yMEAlJzQ#0rgUq31hDG7SHnwnJWOAy4eSkOFiJO4apJVFeQx3dxY).
 
 ## Credit / Source:
 Posted on Reddit by [u/AmJtheFirst](https://www.reddit.com/user/AmJtheFirst/) in [Post](https://www.reddit.com/r/titanfall/comments/gy0sjy/custom_main_menu_background_for_pc_dl_link_and/).
