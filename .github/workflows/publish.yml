@@ -44,7 +44,7 @@ jobs:
         uses: GreenTF/upload-thunderstore-package@v4
         with:
           token: ${{ secrets.TS_KEY }} 
-          community: Northstar
+          community: northstar
           namespace: ${{ github.repository_owner }}
           name: ${{ env.name }}
           description: ${{ env.description }}
