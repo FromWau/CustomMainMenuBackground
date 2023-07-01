@@ -17,9 +17,9 @@ jobs:
             echo cleanVersion=$(echo ${{github.ref_name}} | sed s/v//g) >> $GITHUB_ENV
        - name: Check that version matches
          run: |
-            if [[ "$(grep -Po "\d+\.\d+\.\d+" $(find ./ -name mod.json))" != "${{ env.cleanVersion }}" ]]; then
+            if [[ "$(cat ${{ github.workspace }}/mod.json | jq -r .Version)" != "${{ env.cleanVersion }}" ]]; then
               echo "::debug::${{env.cleanVersion}}"
-              echo "::debug::$(cat $(find ./ -name mod.json ))"
+              echo "::debug::$(cat ${{ github.workspace }}/mod.json)"
               echo "::error::Version in mod.json does not match tag version"
               exit 1
             fi
@@ -33,7 +33,7 @@ jobs:
           echo cleanVersion=$(echo ${{github.ref_name}} | sed s/v//g) >> $GITHUB_ENV      
       - name: Get Description
         run: |
-          echo description=$(cat mod.json | jq -r .Description) >> $GITHUB_ENV
+          echo description=$(cat ${{ github.workspace }}/mod.json | jq -r .Description) >> $GITHUB_ENV
       - uses: actions/checkout@v3
       - run: |
           cat ${{ github.workspace }}/compressed/assets.tar.gz.* > ${{ github.workspace }}/compressed/assets.tar.gz # concat assets
