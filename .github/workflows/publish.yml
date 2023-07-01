@@ -10,21 +10,21 @@ env:
 jobs:
   verify:
     runs-on: ubuntu-latest
-      steps:
+    steps:
        - uses: actions/checkout@v3
-         - name: Get clean version
-           run: |
+       - name: Get clean version
+         run: |
             echo cleanVersion=$(echo ${{github.ref_name}} | sed s/v//g) >> $GITHUB_ENV
-         - name: Get Description
-           run: |
+       - name: Get Description
+         run: |
             echo description=$(grep "Description" mod.json) >> $GITHUB_ENV
-        - name: Check that version matches
-           run: |
+       - name: Check that version matches
+         run: |
             if [[ "$(grep -Po "\d+\.\d+\.\d+" $(find ./ -name mod.json))" != "${{ env.cleanVersion }}" ]]; then
-                echo "::debug::${{env.cleanVersion}}"
-                echo "::debug::$(cat $(find ./ -name mod.json ))"
-                echo "::error::Version in mod.json does not match tag version"
-                exit 1
+              echo "::debug::${{env.cleanVersion}}"
+              echo "::debug::$(cat $(find ./ -name mod.json ))"
+              echo "::error::Version in mod.json does not match tag version"
+              exit 1
             fi
   publish:
     runs-on: ubuntu-latest
