@@ -16,7 +16,6 @@ jobs:
         run: |
           echo cleanVersion=$(echo ${{github.ref_name}} | sed s/v//g) >> $GITHUB_ENV
       - name: Get Description
-        id: vars
         run: |
           echo description=$(grep "Description" mod.json) >> $GITHUB_ENV
       - name: Check that version matches
