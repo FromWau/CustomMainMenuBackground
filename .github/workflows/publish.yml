@@ -15,9 +15,6 @@ jobs:
        - name: Get clean version
          run: |
             echo cleanVersion=$(echo ${{github.ref_name}} | sed s/v//g) >> $GITHUB_ENV
-       - name: Get Description
-         run: |
-            echo description=$(grep "Description" mod.json) >> $GITHUB_ENV
        - name: Check that version matches
          run: |
             if [[ "$(grep -Po "\d+\.\d+\.\d+" $(find ./ -name mod.json))" != "${{ env.cleanVersion }}" ]]; then
@@ -33,6 +30,9 @@ jobs:
       - name: Get clean version # Duplicating code is cool, actually
         run: |
           echo cleanVersion=$(echo ${{github.ref_name}} | sed s/v//g) >> $GITHUB_ENV
+      - name: Get Description
+        run: |
+          echo description=$(cat mod.json | jq -r .Description) >> $GITHUB_ENV
       - uses: actions/checkout@v3
       - run: |
           cat ${{ github.workspace }}/compressed/assets.tar.gz.* > ${{ github.workspace }}/compressed/assets.tar.gz # concat assets
@@ -56,7 +56,6 @@ jobs:
           token: ${{ secrets.TS_KEY }} 
           # Directory to wrap the contents of the repo in
           wrap: mods/${{ github.repository_owner }}.${{ env.name }} # This will wrap your Author.ModName folder in a mods/ folder before publishing
-          #deps: "northstar-Northstar@1.9.3" # <------------- Uncomment this line to add dependencies to your mod, each sparated by a space
           repo: northstar.thunderstore.io
           categories: |
             mods
