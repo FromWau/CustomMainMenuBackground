@@ -50,7 +50,7 @@ jobs:
           description: ${{ env.description }}
           token: ${{ secrets.TS_KEY }} 
           wrap: mods/${{ github.repository_owner }}.${{ env.name }} # This will wrap your Author.ModName folder in a mods/ folder before publishing
-          categories: |
+          categories: | 
             mods
             custom-menus
             client-side
