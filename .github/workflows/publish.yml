@@ -2,10 +2,7 @@ name: Publish package
 
 on:
   release:
-    types: [published] # run when a new release is published
-
-env:
-  name: ${{github.event.repository.name}} # Edit this if the package name differs from the repo name
+    types: [published]
 
 jobs:
   verify:
@@ -28,7 +25,10 @@ jobs:
     needs: verify
     steps:
       - uses: actions/checkout@v3
-      - name: Get clean version # Duplicating code is cool, actually
+      - name: Get name
+        run: |
+          echo name=$(cat ${{ github.workspace }}/mod.json | jq -r .Name) >> $GITHUB_ENV
+      - name: Get clean version
         run: |
           echo cleanVersion=$(echo ${{github.ref_name}} | sed s/v//g) >> $GITHUB_ENV      
       - name: Get Description
@@ -44,18 +44,11 @@ jobs:
         uses: GreenTF/upload-thunderstore-package@v4
         with:
           community: northstar
-          # Name of the team to publish the mod under
-          # This should be modified if your github username is different than your team name on Thunderstore
           namespace: ${{ github.repository_owner }}
-          # Name of the package
-          name: ${{ env.name }} # This can be modified if the package name differs from the repo name
-          # Package version to publish
-          version: ${{ env.cleanVersion }} # This is the tag that was created in the release but without the leading 'v'
-          # Description of the mod
+          name: ${{ env.name }}
+          version: ${{ env.cleanVersion }}
           description: ${{ env.description }}
-          # Thunderstore API token
           token: ${{ secrets.TS_KEY }} 
-          # Directory to wrap the contents of the repo in
           wrap: mods/${{ github.repository_owner }}.${{ env.name }} # This will wrap your Author.ModName folder in a mods/ folder before publishing
           categories: |
             mods
