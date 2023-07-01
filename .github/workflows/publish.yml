@@ -1,4 +1,4 @@
-name: Publish package
+name: Publish Mod
 
 on:
   release:
@@ -41,12 +41,17 @@ jobs:
           rm -f ${{ github.workspace }}/compressed/assets.tar.gz* # delete assets
           rm *.sh # Delete the asset splitting scripts
       - name: Upload Thunderstore Package
-        uses: GreenTF/upload-thunderstore-package@v4
+        uses: GreenTF/upload-thunderstore-package@ad676fb6814de065430f226de9930cec3c811bb3
         with:
-          token: ${{ secrets.TS_KEY }} 
+          token: ${{ secrets.TS_KEY }}
+          repo: northstar.thunderstore.io
           community: northstar
           namespace: ${{ github.repository_owner }}
           name: ${{ env.name }}
           description: ${{ env.description }}
           version: ${{ env.cleanVersion }}
           wrap: mods/${{ github.repository_owner }}.${{ env.name }}
+          categories: |
+            mods
+            client-side
+            custom-menus
