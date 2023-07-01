@@ -60,3 +60,4 @@ jobs:
           categories: |
             mods
             custom-menus
+            client-side
