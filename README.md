@@ -1,4 +1,4 @@
-## CustomMainMenuBackground
+# CustomMainMenuBackground
 Sets a collection of TF2 artworks as the main menu background. 
 
 ## Credit / Source:
